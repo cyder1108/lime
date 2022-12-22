@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+/**********************************************************
+  Sentence
+**********************************************************/
+%sentence {
+  line-height: $line-height-sentence;
+}
+/* .sentence { @extend %sentence; .... } */
+
+/**********************************************************
+  Title
+**********************************************************/
+%title {
+  line-height: $line-height-title;
+}
+/* .title01 { @extend %title; .... } */
+
+/**********************************************************
+  Button
+**********************************************************/
+%button {
+  @include block-module-all;
+  line-height: $line-height-title;
+  font-size: $font-size-m;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+  }
+}
+/* .button01 { @extend %button; .... } */
+
+/**********************************************************
+  Textfield
+**********************************************************/
+%textfield {
+  font-size: $font-size-m;
+  font-family: $font-family-global;
+}
+/* .textfield01 { @extend %textfield; .... } */

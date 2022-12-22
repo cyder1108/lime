@@ -1,0 +1,69 @@
+@charset "utf-8";
+
+/***********************************************************
+  html
+***********************************************************/
+html {
+  font-size: $font-size-global;
+}
+
+/***********************************************************
+  Body
+***********************************************************/
+body {
+  color: $color-global-text;
+  font-size: $font-size-m;
+  font-family: $font-family-global;
+  overflow-y: scroll;
+  min-width: 320px;
+}
+
+/***********************************************************
+  Anchor
+***********************************************************/
+a {
+  text-decoration: none;
+  color: $color-anchor;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/***********************************************************
+  Strong
+***********************************************************/
+strong {
+  font-weight: bold;
+}
+
+
+/***********************************************************
+  HR
+***********************************************************/
+hr {
+  border: none;
+  height: 1px;
+  background-color: $color-border;
+}
+
+/***********************************************************
+  Code
+***********************************************************/
+code {
+  display: block;
+  color: white;
+  white-space: pre;
+  background-color: #111;
+  font-family: "Ricty Diminished", "Ricty Diminished Discord", "Source code pro", monospace;
+  font-size: 12px;
+  line-height: 1.2;
+  transform: rotate(0.028deg);
+}
+
+/***********************************************************
+  Block quote
+***********************************************************/
+blockquote {
+  border-left: 5px solid $color-border;
+  padding-left: 1em;
+}

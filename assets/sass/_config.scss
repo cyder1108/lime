@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+$directions: top, left, right, bottom;
+
+/**********************************************************
+  幅
+**********************************************************/
+$sizes:  xxs, xs,   s,    m,    l,    xl,  xxl;
+$widths: 5px, 10px, 20px, 30px, 40px, 50px, 70px;
+
+$width-global: 1080px;
+$width-xxs: nth( $widths, 1 );
+$width-xs:  nth( $widths, 2 );
+$width-s:   nth( $widths, 3 );
+$width-m:   nth( $widths, 4 );
+$width-l:   nth( $widths, 5 );
+$width-xl:  nth( $widths, 6 );
+$width-xxl: nth( $widths, 7 );
+
+
+/**********************************************************
+  色
+**********************************************************/
+$color-black: #333;
+$color-anchor: #0af;
+
+$color-main: #5af;
+$color-accent: darken(#31c4bd,5%);
+$color-global-text: $color-black;
+$color-border: #ddd;
+
+$color-danger: darken(#d66,4%);
+$color-success: desaturate(lighten(green,15%),50%);
+$color-info: desaturate(lighten(mix(blue,aqua),7%),30%);
+$color-caution: saturate(darken(mix(orange,orange),9%),50%);
+
+
+/**********************************************************
+  行間
+**********************************************************/
+$line-height-title: 1.4;
+$line-height-sentence: 1.7;
+
+/**********************************************************
+  文字サイズ・フォント
+**********************************************************/
+$font-family-global: sans-serif;
+
+$font-size-global: 16px;
+$font-size-xxs: px-to-rem(10px,$font-size-global);
+$font-size-xs: px-to-rem(12px,$font-size-global);
+$font-size-s: px-to-rem(14px,$font-size-global);
+$font-size-m: px-to-rem($font-size-global,$font-size-global);
+$font-size-l: px-to-rem(18px,$font-size-global);
+$font-size-xl: px-to-rem(20px,$font-size-global);
+$font-size-xxl: px-to-rem(24px,$font-size-global);
+
+/**********************************************************
+  ブレークポイント
+**********************************************************/
+$bp-sizes: s,      m,     l;
+$bp-widths: 599px, 1024px, 1100px;
+$break-point-s: nth( $bp-widths, 1 );
+$break-point-m: nth( $bp-widths, 2 );
+$break-point-l: nth( $bp-widths, 3 );
+

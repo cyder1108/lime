@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+/***********************************************************
+  Block center
+***********************************************************/
+.blockCenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/***********************************************************
+  Flex & Flex item
+***********************************************************/
+%flex-container { @include flex-module-all }
+%flex-item { }
+.flex     { @extend %flex-container }
+.flexItem { @extend %flex-item }
+
+/***********************************************************
+  Block
+***********************************************************/
+%block { @include block-module-all; }
+.block { @extend %block }
+
+/***********************************************************
+  Container
+***********************************************************/
+.container {
+  container-type: inline-size;
+}
+
+/***********************************************************
+  Stick
+***********************************************************/
+%stick { @include stick-module-all }
+.stick { @extend %stick }
+
+/***********************************************************
+  Other
+***********************************************************/
+@mixin caution {
+  &:before {
+    content: "レイアウトクラスの同時使用は禁止されています";
+    color: red;
+    outline: 1px solid red;
+  }
+}
+.blockCenter { &.flex,&.flexItem,&.block,&.stick { @include caution } }
+.flex { &.blockCenter,&.flexItem,&.block,&.stick { @include caution } }
+.flexItem { &.blockCenter,&.flex,&.block,&.stick { @include caution } }
+.block { &.blockCenter,&.flex,&.flexItem,&.stick { @include caution } }
+.stick { &.blockCenter,&.flex,&.flexItem,&.block { @include caution } }

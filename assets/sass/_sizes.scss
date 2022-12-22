@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+/***********************************************************
+* Width
+***********************************************************/
+.w-global {
+  @include width( $width-global );
+  /* レスポンシブ対応する場合
+  @include bp-s-or-lower {
+    @include width( unset )
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  */
+}
+
+//@include width-classes("px",1,100,10);
+//@include width-classes("per",1,100,1);
+//@include width-classes("em",1,20,1);
+
+.w-unset { @include width( unset ) }
+@include bp-l-or-lower { .l_w-unset { @include width( unset ) } }
+@include bp-m-or-lower { .m_w-unset { @include width( unset ) } }
+@include bp-s-or-lower { .s_w-unset { @include width( unset ) } }
+
+/***********************************************************
+* Height
+***********************************************************/
+/*
+h-xxxx {
+  @include height(300px);
+}
+*/
+
+//@include height-classes("px",1,100,10);
+//@include height-classes("per",1,100,1);
+//@include height-classes("em",1,20,1);
+
+.h-unset { @include height( unset ) }
+@include bp-l-or-lower { .l_h-unset { @include height( unset ) } }
+@include bp-m-or-lower { .m_h-unset { @include height( unset ) } }
+@include bp-s-or-lower { .s_h-unset { @include height( unset ) } }
+
+/***********************************************************
+* Aspect
+***********************************************************/
+.aspect-16x9 { @include aspect(16,9) }
+.aspect-4x3  { @include aspect(4,3)  }

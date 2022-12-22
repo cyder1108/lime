@@ -1,0 +1,466 @@
+@charset "utf-8";
+@use "sass:math";
+
+/***********************************************************
+* Break point
+***********************************************************/
+@mixin bp-s-or-lower {
+  @media screen and ( max-width: nth($bp-widths, 1) ) { @content }
+}
+@mixin bp-m-or-lower {
+  @media screen and ( max-width: nth($bp-widths, 2) ) { @content }
+}
+@mixin bp-l-or-lower {
+  @media screen and ( max-width: nth($bp-widths, 3) ) { @content }
+}
+
+/***********************************************************
+* Container query
+***********************************************************/
+@mixin container( $size ) {
+  @container ( #{ $size } ) { @content }
+}
+@mixin container-less-than( $width ) {
+  @container ( max-width: #{$width} ) { @content }
+}
+
+@mixin container-more-than( $width ) {
+  @container ( max-width: #{$width} ) { @content }
+}
+
+/***********************************************************
+* Block Module
+***********************************************************/
+
+/*----------------------------------------------------------
+* All */
+
+@mixin block-module-all {
+  @include block-module-base;
+  @include block-module-padding;
+  @include block-module-margin;
+  @include block-module-sticky;
+}
+
+/*----------------------------------------------------------
+* Base */
+
+@mixin block-module-base {
+  display: block;
+}
+
+/*----------------------------------------------------------
+* Padding */
+
+@mixin block-module-padding( $prefix: "" ) {
+
+  // All
+  &.#{$prefix}_padding { padding: $width-m }
+  @for $s from 1 through 7 {
+    &.#{$prefix}_padding-#{ nth($sizes, $s) } { padding: nth( $widths, $s ) }
+  }
+
+  // Axis
+  &.#{$prefix}_paddingV { padding-top: $width-m; padding-bottom: $width-m }
+  &.#{$prefix}_paddingH { padding-left: $width-m; padding-right: $width-m }
+  @for $s from 1 through 7 {
+    &.#{$prefix}_paddingV-#{ nth($sizes,$s) } {
+      padding-top: nth( $widths, $s );
+      padding-bottom: nth( $widths, $s );
+    }
+    &.#{$prefix}_paddingH-#{ nth($sizes,$s) } {
+      padding-left: nth( $widths, $s );
+      padding-right: nth( $widths, $s );
+    }
+  }
+
+  // Direction
+  @each $direction in $directions {
+    $propName: "padding#{ to-upper-case(str-slice($direction,1,1))}";
+    &.#{$prefix}_#{$propName} { padding-#{$direction}: $width-m }
+    @for $s from 1 through 7 {
+      &.#{$prefix}_#{$propName}-#{ nth($sizes, $s) } {
+        padding-#{$direction}: nth( $widths, $s );
+      }
+    }
+  }
+
+  // Canceler
+  &.#{$prefix}_padding-0 { padding: 0 }
+  &.#{$prefix}_paddingV-0 { padding-top: 0; padding-bottom: 0 }
+  &.#{$prefix}_paddingH-0 { padding-left: 0; padding-right: 0 }
+  &.#{$prefix}_paddingT-0 { padding-top: 0 }
+  &.#{$prefix}_paddingL-0 { padding-left: 0 }
+  &.#{$prefix}_paddingR-0 { padding-right: 0 }
+  &.#{$prefix}_paddingB-0 { padding-bottom: 0 }
+
+  @if( $prefix == "" ) {
+    @include bp-l-or-lower { @include block-module-padding("_l") }
+    @include bp-m-or-lower { @include block-module-padding("_m") }
+    @include bp-s-or-lower { @include block-module-padding("_s") }
+  }
+}
+
+/*----------------------------------------------------------
+* Margin */
+
+@mixin block-module-margin( $prefix: "" ) {
+
+  // All
+  &.#{$prefix}_margin { margin: $width-m }
+  &.#{$prefix}_nMargin { margin: -$width-m }
+  @for $s from 1 through 7 {
+    &.#{$prefix}_margin-#{ nth($sizes, $s) } { margin: nth( $widths, $s ) }
+    &.#{$prefix}_nMargin-#{ nth($sizes, $s) } { margin: nth( $widths, $s ) * -1 }
+  }
+
+  // Axis
+  &.#{$prefix}_marginV  { margin-top: $width-m; margin-bottom: $width-m }
+  &.#{$prefix}_nMarginV { margin-top: -$width-m; margin-bottom: -$width-m }
+  &.#{$prefix}_marginH  { margin-left: $width-m; margin-right: $width-m }
+  &.#{$prefix}_nMarginH { margin-left: -$width-m; margin-right: -$width-m }
+  @for $s from 1 through 7 {
+    &.#{$prefix}_marginV-#{ nth($sizes,$s) } {
+      margin-top: nth( $widths, $s );
+      margin-bottom: nth( $widths, $s );
+    }
+    &.#{$prefix}_nMarginV-#{ nth($sizes,$s) } {
+      margin-top: nth( $widths, $s ) * -1;
+      margin-bottom: nth( $widths, $s ) * -1;
+    }
+    &.#{$prefix}_marginH-#{ nth($sizes,$s) } {
+      margin-left: nth( $widths, $s );
+      margin-right: nth( $widths, $s );
+    }
+    &.#{$prefix}_nMarginH-#{ nth($sizes,$s) } {
+      margin-left: nth( $widths, $s ) * -1;
+      margin-right: nth( $widths, $s ) * -1;
+    }
+  }
+
+  // Direction
+  @each $direction in $directions {
+    $propName: "margin#{ to-upper-case(str-slice($direction,1,1))}";
+    $npropName: "nMargin#{ to-upper-case(str-slice($direction,1,1))}";
+    &.#{$prefix}_#{$propName} { margin-#{$direction}: $width-m }
+    &.#{$prefix}_#{$npropName} { margin-#{$direction}: -$width-m }
+    @for $s from 1 through 7 {
+      &.#{$prefix}_#{$propName}-#{ nth($sizes, $s) } {
+        margin-#{$direction}: nth( $widths, $s );
+      }
+      &.#{$prefix}_#{$npropName}-#{ nth($sizes, $s) } {
+        margin-#{$direction}: nth( $widths, $s ) * -1;
+      }
+    }
+  }
+
+  // Canceler
+  &.#{$prefix}_margin-0 { margin: 0 }
+  &.#{$prefix}_marginV-0 { margin-top: 0; margin-bottom: 0 }
+  &.#{$prefix}_marginH-0 { margin-left: 0; margin-right: 0 }
+  &.#{$prefix}_marginT-0 { margin-top: 0 }
+  &.#{$prefix}_marginL-0 { margin-left: 0 }
+  &.#{$prefix}_marginR-0 { margin-right: 0 }
+  &.#{$prefix}_marginB-0 { margin-bottom: 0 }
+
+  @if( $prefix == "" ) {
+    @include bp-l-or-lower { @include block-module-margin("_l") }
+    @include bp-m-or-lower { @include block-module-margin("_m") }
+    @include bp-s-or-lower { @include block-module-margin("_s") }
+  }
+}
+
+/*----------------------------------------------------------
+* Sticky */
+
+@mixin block-module-sticky( $prefix: "" ) {
+  &.#{$prefix}_sticky { position: relative }
+  @if( $prefix == "" ) {
+    @include bp-l-or-lower { @include block-module-sticky("_l") }
+    @include bp-m-or-lower { @include block-module-sticky("_m") }
+    @include bp-s-or-lower { @include block-module-sticky("_s") }
+  }
+}
+
+/***********************************************************
+* Flex Module
+***********************************************************/
+
+/*----------------------------------------------------------
+* All */
+
+@mixin flex-module-all {
+  @include flex-module-base;
+  @include flex-module-direction;
+  @include flex-module-gap;
+  @include flex-module-justifyContent;
+  @include flex-module-alignItems;
+}
+
+/*----------------------------------------------------------
+* Base */
+
+@mixin flex-module-base {
+  display: flex;
+  flex-direction: column;
+  & > %flex-item { flex: 1 }
+  & > %flex-item._fitContent {
+    flex: 0 1 auto;
+  }
+}
+
+/*----------------------------------------------------------
+* Direction */
+
+@mixin flex-module-direction( $prefix: "" ) {
+  &.#{$prefix}_direction-x        { flex-direction: row }
+  &.#{$prefix}_direction-reverseX { flex-direction: row-reverse }
+  &.#{$prefix}_direction-y        { flex-direction: column }
+  &.#{$prefix}_direction-reverseY { flex-direction: column-reverse }
+  @if( $prefix == "" ) {
+    @include bp-l-or-lower { @include flex-module-direction("_l") }
+    @include bp-m-or-lower { @include flex-module-direction("_m") }
+    @include bp-s-or-lower { @include flex-module-direction("_s") }
+  }
+}
+
+/*----------------------------------------------------------
+* Gap */
+
+@mixin flex-module-gap( $prefix: "" ) {
+  &.#{$prefix}_gap { gap: $width-m }
+  @for $s from 1 through 7 {
+    &.#{$prefix}_gap-#{ nth($sizes, $s) } { gap: nth( $widths, $s ) }
+  }
+  &.#{$prefix}_gap-0 { gap: 0 }
+  @if( $prefix== "" ) {
+    @include bp-l-or-lower { @include flex-module-gap("_l") }
+    @include bp-m-or-lower { @include flex-module-gap("_m") }
+    @include bp-s-or-lower { @include flex-module-gap("_s") }
+  }
+}
+
+/*----------------------------------------------------------
+* JustifyContent */
+
+@mixin flex-module-justifyContent( $prefix: "" ) {
+  &.#{$prefix}_justifyContent-left   { justify-content: flex-start }
+  &.#{$prefix}_justifyContent-center { justify-content: center }
+  &.#{$prefix}_justifyContent-right  { justify-content: flex-end }
+  &.#{$prefix}_justifyContent-start  { justify-content: flex-start }
+  &.#{$prefix}_justifyContent-end    { justify-content: flex-end }
+  @if( $prefix == "" ) {
+    @include bp-l-or-lower { @include flex-module-justifyContent("_l") }
+    @include bp-m-or-lower { @include flex-module-justifyContent("_m") }
+    @include bp-s-or-lower { @include flex-module-justifyContent("_s") }
+  }
+}
+
+/*----------------------------------------------------------
+* AlignItems */
+
+@mixin flex-module-alignItems( $prefix: "" ) {
+  &.#{$prefix}_alignItems-top     { align-items: start }
+  &.#{$prefix}_alignItems-center  { align-items: center }
+  &.#{$prefix}_alignItems-bottom  { align-items: end }
+  &.#{$prefix}_alignItems-stretch { align-items: stretch }
+  &.#{$prefix}_alignItems-start   { align-items: start }
+  &.#{$prefix}_alignItems-end     { align-items: end }
+  @if( $prefix == "" ) {
+    @include bp-l-or-lower { @include flex-module-alignItems("_l") }
+    @include bp-m-or-lower { @include flex-module-alignItems("_m") }
+    @include bp-s-or-lower { @include flex-module-alignItems("_s") }
+  }
+}
+
+/***********************************************************
+* Stick module
+***********************************************************/
+
+@mixin stick-module-all {
+  position: absolute;
+  @include stick-module-direction;
+}
+
+@mixin stick-module-direction( $prefix: "" ) {
+  &.#{$prefix}_vertical   { top: 0; bottom: 0 }
+  &.#{$prefix}_horizontal { left: 0; right: 0 }
+  @each $direction in $directions {
+    &.#{$prefix}_#{$direction} { #{$direction}: 0 }
+  }
+  &.#{$prefix}_parent { top: 0; left: 0; right: 0; bottom: 0 }
+
+  $keys: "inset", "offset";
+  @each $key in $keys {
+    $n: 1;
+    @if $key == "offset" { $n: -1 }
+    @for $s from 1 through 7 {
+      &.#{$prefix}_#{$key}V-#{ nth($sizes, $s) }   {
+        top: nth( $widths, $s ) * $n;
+        bottom: nth( $widths, $s ) * $n;
+      }
+      &.#{$prefix}_#{$key}H-#{ nth($sizes, $s) } {
+        left: nth( $widths, $s ) * $n;
+        right: nth( $widths, $s ) * $n;
+      }
+      @each $direction in $directions {
+        &.#{$prefix}_#{$key}#{ to-upper-case(str-slice($direction,1,1))}-#{ nth($sizes, $s) } {
+          #{$direction}: nth( $widths, $s ) * $n
+        }
+      }
+      &.#{$prefix}_#{$key}Parent-#{ nth($sizes, $s) } {
+        top: nth( $widths, $s ) * $n;
+        left: nth( $widths, $s ) * $n;
+        right: nth( $widths, $s ) * $n;
+        bottom: nth( $widths, $s ) * $n;
+      }
+    }
+  }
+  @if( $prefix == "" ) {
+    @include bp-l-or-lower { @include stick-module-direction("_l") }
+    @include bp-m-or-lower { @include stick-module-direction("_m") }
+    @include bp-s-or-lower { @include stick-module-direction("_s") }
+  }
+}
+
+/***********************************************************
+* width module
+***********************************************************/
+@mixin width( $size ) {
+  min-width: $size;
+  max-width: $size;
+}
+
+@mixin width-module( $name, $size, $prefix: "" ) {
+  .#{$prefix}w-#{$name} {
+    min-width: $size;
+    max-width: $size;
+  }
+  @if( $prefix == "" ) {
+    @include bp-l-or-lower { @include width-module($name, $size, "l_") }
+    @include bp-m-or-lower { @include width-module($name, $size, "m_") }
+    @include bp-s-or-lower { @include width-module($name, $size, "s_") }
+  }
+}
+
+@mixin height-module( $name, $size, $prefix: "" ) {
+  .#{$prefix}w-#{$name} {
+    min-height: $size;
+    max-height: $size;
+  }
+  @if( $prefix == "" ) {
+    @include bp-l-or-lower { @include height-module($name, $size, "l_") }
+    @include bp-m-or-lower { @include height-module($name, $size, "m_") }
+    @include bp-s-or-lower { @include height-module($name, $size, "s_") }
+  }
+}
+
+@mixin width-classes( $unitClassName, $min: 1, $max: 10, $scale: 1, $prefix: "" ) {
+  $unit: $unitClassName;
+  @if( $unitClassName == "percent" or $unitClassName == "per" ) {
+    $unit: "%";
+  }
+  @for $i from $min through $max {
+    .#{$prefix}w-#{$i * $scale}#{$unitClassName} {
+      @include width( unquote(($i * $scale) + $unit) );
+    }
+  }
+  @if( $prefix == "" ) {
+    @include bp-l-or-lower { @include width-classes($unitClassName, $min, $max, $scale, "l_") }
+    @include bp-m-or-lower { @include width-classes($unitClassName, $min, $max, $scale, "m_") }
+    @include bp-s-or-lower { @include width-classes($unitClassName, $min, $max, $scale, "s_") }
+  }
+}
+
+/***********************************************************
+* height module
+***********************************************************/
+@mixin height( $size ) {
+  min-height: $size;
+  max-height: $size;
+}
+
+@mixin height-classes( $unitClassName, $min: 1, $max: 10, $scale: 1, $prefix: "" ) {
+  $unit: $unitClassName;
+  @if( $unitClassName == "percent" or $unitClassName == "per" ) {
+    $unit: "%";
+  }
+  @for $i from $min through $max {
+    .#{$prefix}h-#{$i * $scale}#{$unitClassName} {
+      @include height( unquote(($i * $scale) + $unit) );
+    }
+  }
+  @if( $prefix == "" ) {
+    @include bp-l-or-lower { @include height-classes($unitClassName, $min, $max, $scale, "l_") }
+    @include bp-m-or-lower { @include height-classes($unitClassName, $min, $max, $scale, "m_") }
+    @include bp-s-or-lower { @include height-classes($unitClassName, $min, $max, $scale, "s_") }
+  }
+}
+
+/***********************************************************
+* Aspect module
+***********************************************************/
+@mixin aspect( $x, $y ) {
+  &:before {
+    content: "";
+    padding-top: unquote("#{math.div( $y, $x ) * 100 }%");
+    display: block;
+    width: 0;
+    float: right;
+    opacity: 1;
+  }
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+/***********************************************************
+* Background pattern and gradient
+***********************************************************/
+@mixin gradient( $deg, $colors... ) {
+  $prop: "#{$deg},";
+  $len: length($colors);
+  @for $i from 1 through $len {
+    $color: nth($colors,$i);
+    $prop: $prop + "#{$color} #{math.div( 100%, ( $len - 1) ) * ($i - 1)},";
+  }
+  background-image: linear-gradient( unquote( str-slice( $prop, 0, -2 ) ) );
+}
+
+@mixin gradient-v( $colors... ) {
+  @include gradient( 180deg, $colors... );
+}
+
+@mixin gradient-h( $colors... ) {
+  @include gradient( 90deg, $colors... );
+}
+
+@mixin stripe( $deg, $interval, $color1, $color2 ) {
+  background-image: repeating-linear-gradient( $deg, $color1 0, $color1 $interval, $color2 $interval, $color2 $interval * 2 );
+}
+
+@mixin stripe-v( $interval, $color1, $color2 ) {
+  @include stripe(90deg, $interval, $color1, $color2 );
+}
+
+@mixin stripe-h( $interval, $color1, $color2 ) {
+  @include stripe(180deg, $interval, $color1, $color2 );
+}
+
+@mixin mesh( $deg, $border-width, $space-width, $border-color, $space-color ) {
+  background-color: $space-color;
+  background-image:
+    repeating-linear-gradient(
+      $deg,
+        transparent 0, transparent $space-width,
+        $border-color $space-width, $border-color $space-width + $border-width,
+    ),
+    repeating-linear-gradient(
+      $deg + 90,
+        transparent 0, transparent $space-width,
+        $border-color $space-width, $border-color $space-width + $border-width,
+    );
+
+}
