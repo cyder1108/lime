@@ -64,15 +64,9 @@ const NPM = (() => {
 })();
 
 let aa = `
-         .e%%%be.                             ${chalk.gray("ver. " + pkg.version) }
-        d%PY  V "T.  ee   __
-       d%%  ^ | /    ""   %%
-      A%%%L__^|/___  ee %%%%%%% %%,e%% %%    %%  .d%%%b.
-    __%%%%Y   /|^  Y %%   %%    %%^    %%    %%  %{   '"
-  <_  %%%%%b./ | ^   %%   %%    %%     %%    %%   "T%%b.
-   .>--V%%%%%L.A _A/ %%   %%.   %%     %%.  .%%, e.   }%
-  /     "}T%%%%%%P"  %%    "Y%% %%      "T%%V""l."T%%%T"
- /_-~"~""
+${line("=")}
+lime watch start
+${line("=")}
 `.replace(/\^/g,"\\");
 
 process.stdout.write( chalk.cyan(

@@ -95,9 +95,9 @@
   &.#{$prefix}_paddingB-0 { padding-bottom: 0 }
 
   @if( $prefix == "" ) {
-    @include bp-l-or-lower { @include block-module-padding("_l") }
-    @include bp-m-or-lower { @include block-module-padding("_m") }
-    @include bp-s-or-lower { @include block-module-padding("_s") }
+    @include bp-l-or-lower { @include block-module-padding("l\\:") }
+    @include bp-m-or-lower { @include block-module-padding("m\\:") }
+    @include bp-s-or-lower { @include block-module-padding("s\\:") }
   }
 }
 
@@ -164,9 +164,9 @@
   &.#{$prefix}_marginB-0 { margin-bottom: 0 }
 
   @if( $prefix == "" ) {
-    @include bp-l-or-lower { @include block-module-margin("_l") }
-    @include bp-m-or-lower { @include block-module-margin("_m") }
-    @include bp-s-or-lower { @include block-module-margin("_s") }
+    @include bp-l-or-lower { @include block-module-margin("l\\:") }
+    @include bp-m-or-lower { @include block-module-margin("m\\:") }
+    @include bp-s-or-lower { @include block-module-margin("s\\:") }
   }
 }
 
@@ -176,9 +176,9 @@
 @mixin block-module-sticky( $prefix: "" ) {
   &.#{$prefix}_sticky { position: relative }
   @if( $prefix == "" ) {
-    @include bp-l-or-lower { @include block-module-sticky("_l") }
-    @include bp-m-or-lower { @include block-module-sticky("_m") }
-    @include bp-s-or-lower { @include block-module-sticky("_s") }
+    @include bp-l-or-lower { @include block-module-sticky("l\\:") }
+    @include bp-m-or-lower { @include block-module-sticky("m\\:") }
+    @include bp-s-or-lower { @include block-module-sticky("s\\:") }
   }
 }
 
@@ -191,10 +191,10 @@
 
 @mixin flex-module-all {
   @include flex-module-base;
-  @include flex-module-direction;
+  @include flex-module-axis;
   @include flex-module-gap;
-  @include flex-module-justifyContent;
-  @include flex-module-alignItems;
+  @include flex-module-justify;
+  @include flex-module-align;
 }
 
 /*----------------------------------------------------------
@@ -212,15 +212,15 @@
 /*----------------------------------------------------------
 * Direction */
 
-@mixin flex-module-direction( $prefix: "" ) {
-  &.#{$prefix}_direction-x        { flex-direction: row }
-  &.#{$prefix}_direction-reverseX { flex-direction: row-reverse }
-  &.#{$prefix}_direction-y        { flex-direction: column }
-  &.#{$prefix}_direction-reverseY { flex-direction: column-reverse }
+@mixin flex-module-axis( $prefix: "" ) {
+  &.#{$prefix}_axis-x        { flex-direction: row }
+  &.#{$prefix}_axis-reverseX { flex-direction: row-reverse }
+  &.#{$prefix}_axis-y        { flex-direction: column }
+  &.#{$prefix}_axis-reverseY { flex-direction: column-reverse }
   @if( $prefix == "" ) {
-    @include bp-l-or-lower { @include flex-module-direction("_l") }
-    @include bp-m-or-lower { @include flex-module-direction("_m") }
-    @include bp-s-or-lower { @include flex-module-direction("_s") }
+    @include bp-l-or-lower { @include flex-module-axis("l\\:") }
+    @include bp-m-or-lower { @include flex-module-axis("m\\:") }
+    @include bp-s-or-lower { @include flex-module-axis("s\\:") }
   }
 }
 
@@ -234,42 +234,42 @@
   }
   &.#{$prefix}_gap-0 { gap: 0 }
   @if( $prefix== "" ) {
-    @include bp-l-or-lower { @include flex-module-gap("_l") }
-    @include bp-m-or-lower { @include flex-module-gap("_m") }
-    @include bp-s-or-lower { @include flex-module-gap("_s") }
+    @include bp-l-or-lower { @include flex-module-gap("l\\:") }
+    @include bp-m-or-lower { @include flex-module-gap("m\\:") }
+    @include bp-s-or-lower { @include flex-module-gap("s\\:") }
   }
 }
 
 /*----------------------------------------------------------
 * JustifyContent */
 
-@mixin flex-module-justifyContent( $prefix: "" ) {
-  &.#{$prefix}_justifyContent-left   { justify-content: flex-start }
-  &.#{$prefix}_justifyContent-center { justify-content: center }
-  &.#{$prefix}_justifyContent-right  { justify-content: flex-end }
-  &.#{$prefix}_justifyContent-start  { justify-content: flex-start }
-  &.#{$prefix}_justifyContent-end    { justify-content: flex-end }
+@mixin flex-module-justify( $prefix: "" ) {
+  &.#{$prefix}_justify-left   { justify-content: flex-start }
+  &.#{$prefix}_justify-center { justify-content: center }
+  &.#{$prefix}_justify-right  { justify-content: flex-end }
+  &.#{$prefix}_justify-start  { justify-content: flex-start }
+  &.#{$prefix}_justify-end    { justify-content: flex-end }
   @if( $prefix == "" ) {
-    @include bp-l-or-lower { @include flex-module-justifyContent("_l") }
-    @include bp-m-or-lower { @include flex-module-justifyContent("_m") }
-    @include bp-s-or-lower { @include flex-module-justifyContent("_s") }
+    @include bp-l-or-lower { @include flex-module-justify("l\\:") }
+    @include bp-m-or-lower { @include flex-module-justify("m\\:") }
+    @include bp-s-or-lower { @include flex-module-justify("s\\:") }
   }
 }
 
 /*----------------------------------------------------------
 * AlignItems */
 
-@mixin flex-module-alignItems( $prefix: "" ) {
-  &.#{$prefix}_alignItems-top     { align-items: start }
-  &.#{$prefix}_alignItems-center  { align-items: center }
-  &.#{$prefix}_alignItems-bottom  { align-items: end }
-  &.#{$prefix}_alignItems-stretch { align-items: stretch }
-  &.#{$prefix}_alignItems-start   { align-items: start }
-  &.#{$prefix}_alignItems-end     { align-items: end }
+@mixin flex-module-align( $prefix: "" ) {
+  &.#{$prefix}_align-top     { align-items: start }
+  &.#{$prefix}_align-center  { align-items: center }
+  &.#{$prefix}_align-bottom  { align-items: end }
+  &.#{$prefix}_align-stretch { align-items: stretch }
+  &.#{$prefix}_align-start   { align-items: start }
+  &.#{$prefix}_align-end     { align-items: end }
   @if( $prefix == "" ) {
-    @include bp-l-or-lower { @include flex-module-alignItems("_l") }
-    @include bp-m-or-lower { @include flex-module-alignItems("_m") }
-    @include bp-s-or-lower { @include flex-module-alignItems("_s") }
+    @include bp-l-or-lower { @include flex-module-align("l\\:") }
+    @include bp-m-or-lower { @include flex-module-align("m\\:") }
+    @include bp-s-or-lower { @include flex-module-align("s\\:") }
   }
 }
 
@@ -317,9 +317,9 @@
     }
   }
   @if( $prefix == "" ) {
-    @include bp-l-or-lower { @include stick-module-direction("_l") }
-    @include bp-m-or-lower { @include stick-module-direction("_m") }
-    @include bp-s-or-lower { @include stick-module-direction("_s") }
+    @include bp-l-or-lower { @include stick-module-direction("l\\:") }
+    @include bp-m-or-lower { @include stick-module-direction("m\\:") }
+    @include bp-s-or-lower { @include stick-module-direction("s\\:") }
   }
 }
 
@@ -337,9 +337,9 @@
     max-width: $size;
   }
   @if( $prefix == "" ) {
-    @include bp-l-or-lower { @include width-module($name, $size, "l_") }
-    @include bp-m-or-lower { @include width-module($name, $size, "m_") }
-    @include bp-s-or-lower { @include width-module($name, $size, "s_") }
+    @include bp-l-or-lower { @include width-module($name, $size, "l\\:") }
+    @include bp-m-or-lower { @include width-module($name, $size, "m\\:") }
+    @include bp-s-or-lower { @include width-module($name, $size, "s\\:") }
   }
 }
 
@@ -349,9 +349,9 @@
     max-height: $size;
   }
   @if( $prefix == "" ) {
-    @include bp-l-or-lower { @include height-module($name, $size, "l_") }
-    @include bp-m-or-lower { @include height-module($name, $size, "m_") }
-    @include bp-s-or-lower { @include height-module($name, $size, "s_") }
+    @include bp-l-or-lower { @include height-module($name, $size, "l\\:") }
+    @include bp-m-or-lower { @include height-module($name, $size, "m\\:") }
+    @include bp-s-or-lower { @include height-module($name, $size, "s\\:") }
   }
 }
 
@@ -366,9 +366,9 @@
     }
   }
   @if( $prefix == "" ) {
-    @include bp-l-or-lower { @include width-classes($unitClassName, $min, $max, $scale, "l_") }
-    @include bp-m-or-lower { @include width-classes($unitClassName, $min, $max, $scale, "m_") }
-    @include bp-s-or-lower { @include width-classes($unitClassName, $min, $max, $scale, "s_") }
+    @include bp-l-or-lower { @include width-classes($unitClassName, $min, $max, $scale, "l\\:") }
+    @include bp-m-or-lower { @include width-classes($unitClassName, $min, $max, $scale, "m\\:") }
+    @include bp-s-or-lower { @include width-classes($unitClassName, $min, $max, $scale, "s\\:") }
   }
 }
 
@@ -391,9 +391,9 @@
     }
   }
   @if( $prefix == "" ) {
-    @include bp-l-or-lower { @include height-classes($unitClassName, $min, $max, $scale, "l_") }
-    @include bp-m-or-lower { @include height-classes($unitClassName, $min, $max, $scale, "m_") }
-    @include bp-s-or-lower { @include height-classes($unitClassName, $min, $max, $scale, "s_") }
+    @include bp-l-or-lower { @include height-classes($unitClassName, $min, $max, $scale, "l\\:") }
+    @include bp-m-or-lower { @include height-classes($unitClassName, $min, $max, $scale, "m\\:") }
+    @include bp-s-or-lower { @include height-classes($unitClassName, $min, $max, $scale, "s\\:") }
   }
 }
 
@@ -401,19 +401,7 @@
 * Aspect module
 ***********************************************************/
 @mixin aspect( $x, $y ) {
-  &:before {
-    content: "";
-    padding-top: unquote("#{math.div( $y, $x ) * 100 }%");
-    display: block;
-    width: 0;
-    float: right;
-    opacity: 1;
-  }
-  &:after {
-    content: "";
-    display: block;
-    clear: both;
-  }
+  aspect-ratio: math.div($x, $y);
 }
 
 /***********************************************************
@@ -463,4 +451,22 @@
         $border-color $space-width, $border-color $space-width + $border-width,
     );
 
+}
+/***********************************************************
+* clamp classes
+***********************************************************/
+@mixin clamp-classes($min,$max, $prefix: "" ) {
+  @for $line from $min through $max {
+    .#{$prefix}clamp-#{$line} {
+      display: -webkit-box;
+      -webkit-line-clamp: $line;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+  @if( $prefix == "" ) {
+    @include bp-l-or-lower { @include clamp-classes($min, $max, "l\\:") }
+    @include bp-m-or-lower { @include clamp-classes($min, $max, "m\\:") }
+    @include bp-s-or-lower { @include clamp-classes($min, $max, "s\\:") }
+  }
 }

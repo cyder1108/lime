@@ -3,7 +3,7 @@
 /***********************************************************
   Block center
 ***********************************************************/
-.blockCenter {
+.region {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -46,8 +46,8 @@
     outline: 1px solid red;
   }
 }
-.blockCenter { &.flex,&.flexItem,&.block,&.stick { @include caution } }
-.flex { &.blockCenter,&.flexItem,&.block,&.stick { @include caution } }
-.flexItem { &.blockCenter,&.flex,&.block,&.stick { @include caution } }
-.block { &.blockCenter,&.flex,&.flexItem,&.stick { @include caution } }
-.stick { &.blockCenter,&.flex,&.flexItem,&.block { @include caution } }
+.region { &.flex,&.flexItem,&.block,&.stick { @include caution } }
+.flex { &.region,&.flexItem,&.block,&.stick { @include caution } }
+.flexItem { &.region,&.flex,&.block,&.stick { @include caution } }
+.block { &.region,&.flex,&.flexItem,&.stick { @include caution } }
+.stick { &.region,&.flex,&.flexItem,&.block { @include caution } }

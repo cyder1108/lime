@@ -1,4 +1,4 @@
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+:where(html), :where(body), :where(div), :where(span), :where(applet), :where(object), :where(iframe), :where(h1), :where(h2), :where(h3), :where(h4), :where(h5), :where(h6), :where(p), :where(blockquote), :where(pre), :where(a), :where(abbr), :where(acronym), :where(address), :where(big), :where(cite), :where(code), :where(del), :where(dfn), :where(em), :where(img), :where(ins), :where(kbd), :where(q), :where(s), :where(samp), :where(small), :where(strike), :where(strong), :where(sub), :where(sup), :where(tt), :where(var), :where(b), :where(u), :where(i), :where(center), :where(dl), :where(dt), :where(dd), :where(ol), :where(ul), :where(li), :where(fieldset), :where(form), :where(label), :where(legend), :where(table), :where(caption), :where(tbody), :where(tfoot), :where(thead), :where(tr), :where(th), :where(td), :where(article), :where(aside), :where(canvas), :where(details), :where(embed), :where(figure), :where(figcaption), :where(footer), :where(header), :where(hgroup), :where(menu), :where(nav), :where(output), :where(ruby), :where(section), :where(summary), :where(time), :where(mark), :where(audio), :where(video) {
   margin: 0;
   padding: 0;
   border: 0;
@@ -6,32 +6,34 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   font-size: 100%;
   vertical-align: baseline;
 }
-html {
+:where(html) {
   line-height: 1;
 }
-ol, ul {
+:where(ol), :where(ul) {
   list-style: none;
 }
-table {
+:where(table) {
   border-collapse: collapse;
   border-spacing: 0;
 }
-caption, th, td {
+:where(caption),
+ :where(th),
+ :where(td) {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
-q, blockquote {
+:where(q), :where(blockquote) {
   quotes: none;
 }
-q:before, q:after, blockquote:before, blockquote:after {
+:where(q):before, :where(q):after, :where(blockquote):before, :where(blockquote):after {
   content: "";
   content: none;
 }
-a img {
+:where(a) :where(img) {
   border: none;
 }
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+:where(article), :where(aside), :where(details), :where(figcaption), :where(figure), :where(footer), :where(header), :where(hgroup), :where(menu), :where(nav), :where(section), :where(summary) {
   display: block;
 }
 

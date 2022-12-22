@@ -19,9 +19,9 @@
 //@include width-classes("em",1,20,1);
 
 .w-unset { @include width( unset ) }
-@include bp-l-or-lower { .l_w-unset { @include width( unset ) } }
-@include bp-m-or-lower { .m_w-unset { @include width( unset ) } }
-@include bp-s-or-lower { .s_w-unset { @include width( unset ) } }
+@include bp-l-or-lower { .l\:w-unset { @include width( unset ) } }
+@include bp-m-or-lower { .m\:w-unset { @include width( unset ) } }
+@include bp-s-or-lower { .s\:w-unset { @include width( unset ) } }
 
 /***********************************************************
 * Height
@@ -37,12 +37,13 @@ h-xxxx {
 //@include height-classes("em",1,20,1);
 
 .h-unset { @include height( unset ) }
-@include bp-l-or-lower { .l_h-unset { @include height( unset ) } }
-@include bp-m-or-lower { .m_h-unset { @include height( unset ) } }
-@include bp-s-or-lower { .s_h-unset { @include height( unset ) } }
+@include bp-l-or-lower { .l\:h-unset { @include height( unset ) } }
+@include bp-m-or-lower { .m\:h-unset { @include height( unset ) } }
+@include bp-s-or-lower { .s\:h-unset { @include height( unset ) } }
 
 /***********************************************************
 * Aspect
 ***********************************************************/
 .aspect-16x9 { @include aspect(16,9) }
 .aspect-4x3  { @include aspect(4,3)  }
+.aspect-1x1  { @include aspect(1,1)  }

@@ -17,9 +17,9 @@
   .#{$prefix}fs-xxl { font-size: $font-size-xxl };
 }
 @include font-size-utils;
-@include bp-l-or-lower { @include font-size-utils("l_"); }
-@include bp-m-or-lower { @include font-size-utils("m_"); }
-@include bp-s-or-lower { @include font-size-utils("s_"); }
+@include bp-l-or-lower { @include font-size-utils("l\\:"); }
+@include bp-m-or-lower { @include font-size-utils("m\\:"); }
+@include bp-s-or-lower { @include font-size-utils("s\\:"); }
 
 /*----------------------------------------------------------
 * Text align */
@@ -30,9 +30,9 @@
   .#{$prefix}align-right  { text-align: right  };
 }
 @include text-align-utils;
-@include bp-l-or-lower { @include text-align-utils("l_"); }
-@include bp-m-or-lower { @include text-align-utils("m_"); }
-@include bp-s-or-lower { @include text-align-utils("s_"); }
+@include bp-l-or-lower { @include text-align-utils("l\\:"); }
+@include bp-m-or-lower { @include text-align-utils("m\\:"); }
+@include bp-s-or-lower { @include text-align-utils("s\\:"); }
 
 /*----------------------------------------------------------
 * ETC */
@@ -53,7 +53,7 @@
   list-style-type: decimal;
   margin-left: 1.5em;
 }
-.kome {
+.ref {
   position: relative;
   padding-left: 1.5em;
   &:before {
@@ -64,6 +64,11 @@
   }
 }
 .antialias { transform: rotate(0.028deg) }
+
+
+// .clamp-{ 1 - 5 }
+@include clamp-classes(1,5);
+
 
 
 /***********************************************************
@@ -78,9 +83,9 @@
   .#{$prefix}position-absolute { position: absolute };
 }
 @include position-utils;
-@include bp-l-or-lower { @include position-utils("l_"); }
-@include bp-m-or-lower { @include position-utils("m_"); }
-@include bp-s-or-lower { @include position-utils("s_"); }
+@include bp-l-or-lower { @include position-utils("l\\:"); }
+@include bp-m-or-lower { @include position-utils("m\\:"); }
+@include bp-s-or-lower { @include position-utils("s\\:"); }
 
 /*----------------------------------------------------------
 * Float */
@@ -91,9 +96,9 @@
   .#{$prefix}float-none  { float: none  };
 }
 @include float-utils;
-@include bp-l-or-lower { @include float-utils("l_"); }
-@include bp-m-or-lower { @include float-utils("m_"); }
-@include bp-s-or-lower { @include float-utils("s_"); }
+@include bp-l-or-lower { @include float-utils("l\\:"); }
+@include bp-m-or-lower { @include float-utils("m\\:"); }
+@include bp-s-or-lower { @include float-utils("s\\:"); }
 
 /***********************************************************
 * Visibilities and Display
@@ -107,21 +112,21 @@
   .#{$prefix}display-inlineBlock { display: inline-block };
 }
 @include display-utils;
-@include bp-l-or-lower { @include display-utils("l_"); }
-@include bp-m-or-lower { @include display-utils("m_"); }
-@include bp-s-or-lower { @include display-utils("s_"); }
+@include bp-l-or-lower { @include display-utils("l\\:"); }
+@include bp-m-or-lower { @include display-utils("m\\:"); }
+@include bp-s-or-lower { @include display-utils("s\\:"); }
 
 /*----------------------------------------------------------
 * Visibility */
 
 @mixin visibility-utils( $prefix: "" ) {
-  .#{$prefix}invisible { display: none  };
-  .#{$prefix}visible   { display: block };
+  .#{$prefix}invisible { content-visibility: hidden; }
+  .#{$prefix}visible   { content-visibility: visible; }
 }
 @include visibility-utils;
-@include bp-l-or-lower { @include visibility-utils("l_"); }
-@include bp-m-or-lower { @include visibility-utils("m_"); }
-@include bp-s-or-lower { @include visibility-utils("s_"); }
+@include bp-l-or-lower { @include visibility-utils("l\\:"); }
+@include bp-m-or-lower { @include visibility-utils("m\\:"); }
+@include bp-s-or-lower { @include visibility-utils("s\\:"); }
 
 /*----------------------------------------------------------
 * Opacity */
@@ -188,6 +193,6 @@
   .#{$prefix}ignorePointerEvents { pointer-events: none };
 }
 @include pointer-events-utils;
-@include bp-l-or-lower { @include pointer-events-utils("l_"); }
-@include bp-m-or-lower { @include pointer-events-utils("m_"); }
-@include bp-s-or-lower { @include pointer-events-utils("s_"); }
+@include bp-l-or-lower { @include pointer-events-utils("l\\:"); }
+@include bp-m-or-lower { @include pointer-events-utils("m\\:"); }
+@include bp-s-or-lower { @include pointer-events-utils("s\\:"); }

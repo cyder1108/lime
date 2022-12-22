@@ -1,6 +1,6 @@
 {
-  "name": "citrus",
-  "version": "1.4.0",
+  "name": "lime",
+  "version": "1.0",
   "description": "",
   "main": "",
   "scripts": {
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/composeuni/citrus.git"
+    "url": "git+https://github.com/cyder1108/lime.git"
   },
   "author": "Kazushi Kaneko",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/composeuni/citrus/issues"
+    "url": "https://github.com/cyder1108/lime/issues"
   },
-  "homepage": "https://github.com/composeuni/citrus#readme",
+  "homepage": "https://github.com/cyder1108/lime#readme",
   "devDependencies": {
     "@babel/core": "^7.17.10",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
