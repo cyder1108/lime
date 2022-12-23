@@ -6,7 +6,6 @@
 %sentence {
   line-height: $line-height-sentence;
 }
-/* .sentence { @extend %sentence; .... } */
 
 /**********************************************************
   Title
@@ -14,13 +13,16 @@
 %title {
   line-height: $line-height-title;
 }
-/* .title01 { @extend %title; .... } */
 
 /**********************************************************
   Button
 **********************************************************/
 %button {
   @include block-module-all;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   line-height: $line-height-title;
   font-size: $font-size-m;
   cursor: pointer;
@@ -28,7 +30,6 @@
     text-decoration: none;
   }
 }
-/* .button01 { @extend %button; .... } */
 
 /**********************************************************
   Textfield
@@ -37,4 +38,3 @@
   font-size: $font-size-m;
   font-family: $font-family-global;
 }
-/* .textfield01 { @extend %textfield; .... } */
