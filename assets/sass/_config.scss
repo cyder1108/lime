@@ -2,6 +2,8 @@
 
 $directions: top, left, right, bottom;
 
+$enableSupportDarkMode: true;
+
 /**********************************************************
   幅
 **********************************************************/
@@ -21,18 +23,37 @@ $width-xxl: nth( $widths, 7 );
 /**********************************************************
   色
 **********************************************************/
-$color-black: #333;
-$color-anchor: #0af;
+// Common
+$color-black: #111;
+$color-white: #fff;
 
+// Light Mode
 $color-main: #5af;
 $color-accent: darken(#31c4bd,5%);
-$color-global-text: $color-black;
+
+$color-text: #333;
+$color-bg: $color-white;
+$color-anchor: #0af;
 $color-border: #ddd;
 
 $color-danger: darken(#d66,4%);
-$color-success: desaturate(lighten(green,15%),50%);
+$color-success: desaturate(lighten(green,20%),50%);
 $color-info: desaturate(lighten(mix(blue,aqua),7%),30%);
 $color-caution: saturate(darken(mix(orange,orange),9%),50%);
+
+// Dark Mode
+$dark-color-main: lighten($color-main, 5%);
+$dark-color-accent: lighten($color-accent,5%);
+
+$dark-color-text: #ccc;
+$dark-color-bg: $color-black;
+$dark-color-anchor: lighten($color-anchor, 5%);
+$dark-color-border: #333;
+
+$dark-color-danger: lighten($color-danger, 5%);
+$dark-color-success: lighten($color-success, 5%);
+$dark-color-info: lighten($color-info, 5%);
+$dark-color-caution: lighten($color-caution, 5%);
 
 
 /**********************************************************

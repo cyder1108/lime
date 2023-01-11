@@ -14,7 +14,7 @@
   */
 }
 
-//@include width-classes("px",1,100,10);
+@include width-classes("px",1,100,10);
 //@include width-classes("per",1,100,1);
 //@include width-classes("em",1,20,1);
 
@@ -32,7 +32,7 @@ h-xxxx {
 }
 */
 
-//@include height-classes("px",1,100,10);
+@include height-classes("px",1,100,10);
 //@include height-classes("per",1,100,1);
 //@include height-classes("em",1,20,1);
 

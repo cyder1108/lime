@@ -14,6 +14,16 @@
   @media screen and ( max-width: nth($bp-widths, 3) ) { @content }
 }
 
+
+/***********************************************************
+* Theme
+***********************************************************/
+@mixin when-dark-mode {
+  @if $enableSupportDarkMode {
+    @media (prefers-color-scheme: dark) { @content }
+  }
+}
+
 /***********************************************************
 * Container query
 ***********************************************************/
@@ -468,5 +478,20 @@
     @include bp-l-or-lower { @include clamp-classes($min, $max, "l\\:") }
     @include bp-m-or-lower { @include clamp-classes($min, $max, "m\\:") }
     @include bp-s-or-lower { @include clamp-classes($min, $max, "s\\:") }
+  }
+}
+
+/***********************************************************
+* Color-classes
+***********************************************************/
+@mixin color-classes( $name, $color, $prefix: "" ) {
+  .#{$prefix}color-#{$name} {
+    color: $color;
+  }
+  .#{$prefix}bg-#{$name} {
+    background-color: $color;
+  }
+  @if( $prefix == "" ) {
+    @include when-dark-mode { @include color-classes($name, $color, "dark\\:") }
   }
 }

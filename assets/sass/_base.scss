@@ -12,15 +12,27 @@
   --width-l: #{$width-l};
   --width-xl: #{$width-xl};
   --width-xxl: #{$width-xxl};
+
+
   --color-black: #{$color-black};
+  --color-white: #{$color-white};
+
+  --color-main: #{$color-main};
+  --color-accent: #{$color-accent};
+
+  --color-text: #{$color-text};
+  --color-bg: #{$color-bg};
   --color-anchor: #{$color-anchor};
-  --color-text: #{$color-global-text};
+  --color-border: #{$color-border};
+
   --color-danger: #{$color-danger};
   --color-success: #{$color-success};
   --color-info: #{$color-info};
   --color-caution: #{$color-caution};
+
   --line-height-title: #{$line-height-title};
   --line-height-sentence: #{$line-height-sentence};
+
   --font-size-global: #{$font-size-global};
   --font-size-xxs: #{$font-size-xxs};
   --font-size-xs: #{$font-size-xs};
@@ -30,6 +42,20 @@
   --font-size-xl: #{$font-size-xl};
   --font-size-xxl: #{$font-size-xxl};
 
+  @include when-dark-mode {
+    --color-main: #{$dark-color-main};
+    --color-accent: #{$dark-color-accent};
+
+    --color-text: #{$dark-color-text};
+    --color-bg: #{$dark-color-bg};
+    --color-anchor: #{$dark-color-anchor};
+    --color-border: #{$dark-color-border};
+
+    --color-danger: #{$dark-color-danger};
+    --color-success: #{$dark-color-success};
+    --color-info: #{$dark-color-info};
+    --color-caution: #{$dark-color-caution};
+  }
 }
 /***********************************************************
   html
@@ -42,11 +68,12 @@
   Body
 ***********************************************************/
 :where(body) {
-  color: $color-global-text;
   font-size: $font-size-m;
   font-family: $font-family-global;
   overflow-y: scroll;
   min-width: 320px;
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }
 
 /***********************************************************
@@ -54,10 +81,8 @@
 ***********************************************************/
 :where(a) {
   text-decoration: none;
-  color: $color-anchor;
-  &:hover {
-    text-decoration: underline;
-  }
+  color: var(--color-anchor);
+  &:hover { text-decoration: underline }
 }
 
 /***********************************************************
@@ -73,7 +98,7 @@
 :where(hr) {
   border: none;
   height: 1px;
-  background-color: $color-border;
+  background-color: var(--color-border);
 }
 
 /***********************************************************
@@ -94,7 +119,7 @@
   Block quote
 ***********************************************************/
 :where(blockquote) {
-  border-left: 5px solid $color-border;
+  border-left: 5px solid var(--color-border);
   padding-left: 1em;
 }
 
@@ -115,11 +140,13 @@
 :where(input[type=datetime-local]),
 :where(input[type=number]),
 :where(textarea) {
-  border: 1px solid $color-border;
+  border: 1px solid var(--color-border);
   font-size: $font-size-m;
   font-family: $font-family-global;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   &:focus {
     outline: none;
-    border-color: $color-anchor;
+    border-color: var(--color-anchor);
   }
 }

@@ -142,36 +142,44 @@
 /***********************************************************
 * Color
 ***********************************************************/
-/*----------------------------------------------------------
-* Text color */
+@for $v from 0 through 20 {
+  $v: $v * 5;
+  .color-hazy#{ $v } { color: mix($color-text,$color-bg, 100% - $v * 1%) }
+  .bg-hazy#{ $v } { background-color: mix($color-text,$color-bg, 100% - $v * 1%) }
+  @include when-dark-mode {
+    .color-hazy#{ $v } { color: mix($dark-color-text,$dark-color-bg, 100% - $v * 1%) }
+    .bg-hazy#{ $v } { background-color: mix($dark-color-text,$dark-color-bg, 100% - $v * 1%) }
+  }
+}
 
-.color-main    { color: $color-main }
-.color-accent  { color: $color-accent }
-.color-anchor  { color: $color-anchor }
-.color-white   { color: white }
-.color-black   { color: $color-black }
-.color-info    { color: $color-info }
-.color-success { color: $color-success }
-.color-caution { color: $color-caution }
-.color-danger  { color: $color-danger }
+@for $v from 0 through 20 {
+  $v: $v * 5;
+  @include when-dark-mode {
+    .dark\:color-hazy#{ $v } { color: mix($dark-color-text,$dark-color-bg, 100% - $v * 1%) }
+    .dark\:bg-hazy#{ $v } { background-color: mix($dark-color-text,$dark-color-bg, 100% - $v * 1%) }
+  }
+}
+
+@include color-classes("white",   var(--color-white));
+@include color-classes("black",   var(--color-black));
+
+@include color-classes("main",    var(--color-main));
+@include color-classes("accent",  var(--color-accent));
+
+@include color-classes("text",    var(--color-text));
+@include color-classes("bg",      var(--color-bg));
+@include color-classes("anchor",  var(--color-anchor));
+@include color-classes("border",  var(--color-border));
+
+@include color-classes("danger",  var(--color-danger));
+@include color-classes("success", var(--color-success));
+@include color-classes("info",    var(--color-info));
+@include color-classes("caution", var(--color-caution));
 
 .color-clip {
   color: transparent;
   -webkit-background-clip: text;
 }
-
-/*----------------------------------------------------------
-* Background color */
-
-.bg-main    { background-color: $color-main }
-.bg-accent  { background-color: $color-accent }
-.bg-anchor  { background-color: $color-anchor }
-.bg-white   { background-color: white }
-.bg-black   { background-color: $color-black }
-.bg-info    { background-color: $color-info }
-.bg-success { background-color: $color-success }
-.bg-caution { background-color: $color-caution }
-.bg-danger  { background-color: $color-danger }
 
 /*----------------------------------------------------------
 * ETC */
