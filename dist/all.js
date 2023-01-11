@@ -1,18 +1,6 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
-
-/***/ "./src/scripts/application.js":
-/*!************************************!*\
-  !*** ./src/scripts/application.js ***!
-  \************************************/
-/***/ ((module, exports, __webpack_require__) => {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ../styles/style.scss */ "./src/styles/style.scss")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (_style) {
-  "use strict";
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-/***/ }),
 
 /***/ "./src/styles/style.scss":
 /*!*******************************!*\
@@ -20,7 +8,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
   \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -66,12 +53,19 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module used 'module' so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/scripts/application.js");
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+var exports = __webpack_exports__;
+/*!************************************!*\
+  !*** ./src/scripts/application.ts ***!
+  \************************************/
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__webpack_require__(/*! ../styles/style.scss */ "./src/styles/style.scss");
+
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=all.js.map

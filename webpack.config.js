@@ -6,7 +6,7 @@ module.exports = {
   //mode: "production",
   //mode: "development",
   devtool: "source-map",
-  entry: "./src/scripts/application.js",
+  entry: "./src/scripts/application.ts",
   output: {
     filename: "all.js",
     path: path.resolve(__dirname, "dist")
@@ -16,12 +16,14 @@ module.exports = {
     rules: [
       {
         test: /\.(scss|sass|css)$/,
-        //exclude: /node_modules\/(?!(__es6modules__))/,
         use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
       },
       {
+        test: /\.ts$/,
+        use: 'ts-loader',
+      },
+      {
         test: /\.(js|jsx|mjs)$/,
-        //exclude: /node_modules\/(?!(__es6modules__))/,
         use: {
           loader: "babel-loader",
           options: {
