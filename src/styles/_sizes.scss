@@ -5,18 +5,11 @@
 ***********************************************************/
 .w-global {
   @include width( $width-global );
-  /* レスポンシブ対応する場合
-  @include bp-s-or-lower {
-    @include width( unset )
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  */
 }
 
 @include width-classes("px",1,100,10);
-//@include width-classes("per",1,100,1);
-//@include width-classes("em",1,20,1);
+@include width-classes("per",1,100,1);
+@include width-classes("em",1,20,1);
 
 .w-unset { @include width( unset ) }
 @include bp-l-or-lower { .l\:w-unset { @include width( unset ) } }
@@ -33,8 +26,8 @@ h-xxxx {
 */
 
 @include height-classes("px",1,100,10);
-//@include height-classes("per",1,100,1);
-//@include height-classes("em",1,20,1);
+@include height-classes("per",1,100,1);
+@include height-classes("em",1,20,1);
 
 .h-unset { @include height( unset ) }
 @include bp-l-or-lower { .l\:h-unset { @include height( unset ) } }

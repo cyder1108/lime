@@ -1,17 +1,27 @@
 const webpack = require('webpack');
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = {
-  mode: "production",
+  //mode: "production",
   //mode: "development",
-  //devtool: "inline-source-map",
-  entry: [
-    "./assets/es/application.js",
-  ],
-  output: { filename: "all.js" },
+  devtool: "source-map",
+  entry: "./src/scripts/application.js",
+  output: {
+    filename: "all.js",
+    path: path.resolve(__dirname, "dist")
+  },
+
   module: {
     rules: [
       {
+        test: /\.(scss|sass|css)$/,
+        //exclude: /node_modules\/(?!(__es6modules__))/,
+        use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
+      },
+      {
         test: /\.(js|jsx|mjs)$/,
-        exclude: /node_modules\/(?!(__es6modules__))/,
+        //exclude: /node_modules\/(?!(__es6modules__))/,
         use: {
           loader: "babel-loader",
           options: {
@@ -26,6 +36,7 @@ module.exports = {
           }
         }
       }
+
     ]
   },
   plugins: [
@@ -33,7 +44,15 @@ module.exports = {
       process: 'process/browser',
       events: 'events',
     }),
+    new MiniCssExtractPlugin({
+      filename: 'all.css',
+    }),
   ],
+
+  watchOptions: {
+    ignored: /node_modules/
+  },
+
   resolve: {
     alias: {
       assert: "assert",
