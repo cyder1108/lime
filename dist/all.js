@@ -57,9 +57,9 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 var exports = __webpack_exports__;
-/*!************************************!*\
-  !*** ./src/scripts/application.ts ***!
-  \************************************/
+/*!*************************************!*\
+  !*** ./src/scripts/application.tsx ***!
+  \*************************************/
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 __webpack_require__(/*! ../styles/style.scss */ "./src/styles/style.scss");

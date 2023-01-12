@@ -6,7 +6,7 @@ module.exports = {
   //mode: "production",
   //mode: "development",
   devtool: "source-map",
-  entry: "./src/scripts/application.ts",
+  entry: "./src/scripts/application.tsx",
   output: {
     filename: "all.js",
     path: path.resolve(__dirname, "dist")
@@ -19,7 +19,7 @@ module.exports = {
         use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
       },
       {
-        test: /\.ts$/,
+        test: /\.(ts|tsx)$/,
         use: 'ts-loader',
       },
       {
@@ -56,6 +56,7 @@ module.exports = {
   },
 
   resolve: {
+    extensions: [".tsx", ".ts", ".js", ".jsx", ".mjs"],
     alias: {
       assert: "assert",
       buffer: "buffer",
