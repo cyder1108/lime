@@ -1,3 +1,3 @@
 [submodule "src/styles"]
 	path = src/styles
-	url = github_cyder:cyder1108/lime-css
+	url = git@github.com:cyder1108/lime-css.git
